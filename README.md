@@ -22,7 +22,7 @@ Ce projet est un test technique front-end développé avec React, TypeScript, Ta
 
 ## 🚀 Lancer le projet en local
 
-lien versel:https://boaz-24617oijg-ulrichmbounas-projects.vercel.app/
+lien versel:https://boaz-git-main-ulrichmbounas-projects.vercel.app/
 
 pour se connecter :
 email :john.doe@example.com
