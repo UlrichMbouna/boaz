@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Sidebar: React.FC = () => {       
+const Sidebar: React.FC = () => {  
+    const navigate = useNavigate();     
     return (
         <aside className="sidebar flex mr-6" style={{ borderRadius: 25, justifyContent: 'space-between' }} >
             <div>
-                <div className='flex justify-center'>
+                <div className='flex justify-center' onClick={() => navigate('/home')}>
                     <img src='./assets/img/BOAZ  studyy 1.svg' alt='logo' style={{ width: "107,58px", height: 44 }} />
                 </div>
                 <div style={{ marginTop: 75, marginBottom: 20 }}>

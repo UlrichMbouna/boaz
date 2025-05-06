@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, selectError, selectIsLoading, selectUser } from '../features/user/userSlice'; // Importer les sélecteurs et actions
 import { AppDispatch } from '../app/store';
+import { useNavigate } from 'react-router-dom';
 // import { AppDispatch } from '../store'; // Importer le type AppDispatch
 
 const Login: React.FC = () => {
@@ -24,10 +25,17 @@ const Login: React.FC = () => {
             [name]: value, // Met à jour la valeur du champ spécifique
         }));
     };
-
+    const navigate=useNavigate();
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        dispatch(loginUser(formData));  // Dispatch avec le bon type
+        dispatch(loginUser(formData)).then(
+            (result) => {
+                if (result.meta.requestStatus === 'fulfilled') {
+                    // Rediriger vers la page d'accueil après une connexion réussie
+                    navigate('/home');
+                }
+            }
+        );  // Dispatch avec le bon type
     };
 
     const loginFields = [
