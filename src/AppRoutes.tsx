@@ -8,6 +8,7 @@ import Layout from './components/Layout';
 import ParcourSuivie from './pages/ParcourSuivie';
 import EtapeSuivie from './pages/EtapeSuivie';
 import Login from './pages/Login';
+import SecondSuivie from './pages/SecondSuivie';
 
 const AppRoutes: React.FC = () => {
     
@@ -21,6 +22,9 @@ const AppRoutes: React.FC = () => {
                     <Route path="/parcours-suivie" element={<ParcourSuivie/>} />
                     <Route path="/etape-suivie" element={<EtapeSuivie/>} />
                     <Route path="/" element={<Login/>} />
+                    <Route path="/seconde-etape" element={<SecondSuivie/>} />
+
+                    
 
 
 

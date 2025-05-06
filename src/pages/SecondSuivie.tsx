@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import InputField from '../components/InputField';
 import SelectField from '../components/SelectField';
-import { useNavigate } from "react-router-dom";
+import SelectedField from '../components/SelectedField';
 
-const EtapeSuivie: React.FC = () => {
+const SecondSuivie: React.FC = () => {
     const [currentStep, setCurrentStep] = useState(0);
-    const navigate = useNavigate();
-    const handleFinish = () => {
-        navigate("/seconde-etape");
-    };
 
     const steps = [
         { title: 'Étape 1', component: <StepOne /> },
@@ -50,7 +46,7 @@ const EtapeSuivie: React.FC = () => {
               `}
                                 >
                                     <span className={`${index <= currentStep ? 'text-blue-600 dark:text-blue-300' : 'text-gray-500 dark:text-gray-100'}`}>
-                                        {index + 1}
+                                        {index + 4}
                                     </span>
                                 </span>
                             </li>
@@ -79,13 +75,12 @@ const EtapeSuivie: React.FC = () => {
 
                             <button
                                 style={{ width: 110, height: 32 }}
-                                onClick={currentStep === steps.length - 1 ? handleFinish : handleNext}
-                                // disabled={currentStep === steps.length - 1}
+                                onClick={handleNext}
+                                disabled={currentStep === steps.length - 1}
                                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center"
                             >
-                                {currentStep === steps.length - 1 ? "Terminer" : "Suivant"}
+                                Suivant
                             </button>
-
 
                         </div>
                     </div>
@@ -96,7 +91,7 @@ const EtapeSuivie: React.FC = () => {
     );
 };
 
-export default EtapeSuivie;
+export default SecondSuivie;
 const fields = [
     { id: "nom", label: "Nom", placeholder: "Moni", required: true },
     { id: "prenom", label: "Prénom", placeholder: "Roy", required: true },
@@ -134,71 +129,46 @@ const fields2 = [
 ];
 const selectFields = [
     {
-        id: "annee_scolaire",
-        label: "Année scolaire",
-        options: ["2023/2024", "2024/2025", "2025/2026"],
-        required: true,
+        id: "depot_bancaire",
+        label: "Dépôt Bancaire",
+        description: "Choisissez cette option si vous souhaitez payer la totalité des frais.",
     },
     {
-        id: "renouvellement",
-        label: "Est-ce un renouvellement ?",
-        options: ["Oui", "Non"],
-        required: true,
-    },
-    {
-        id: "montant_par_mois",
-        label: "Montant à recevoir par mois en euro",
-        options: ["600€", "700€", "800€", "900€", "1000€"],
-        required: true,
-    },
-    {
-        id: "motif_voyage",
-        label: "Je vais en France pour",
-        options: ["Études", "Stage", "Formation", "Recherche"],
-        required: true,
-    },
-    {
-        id: "devise_pays",
-        label: "Devise de votre pays d'origine",
-        options: ["FCFA", "USD", "GNF", "XOF"],
-        required: true,
-    },
-    {
-        id: "acs_assurance",
-        label: "ACS Assurance France",
-        options: ["Oui", "Non"],
-        required: true,
-    },
-    {
-        id: "duree_avi",
-        label: "Durée de l'AVI",
-        options: ["6 mois", "9 mois", "12 mois"],
-        required: true,
-    },
+        id: "virement_bancaire",
+        label: "Virement Bancaire Direct",
+        description: "Choisissez cette option si vous avez souscrits à un fiancement .",
+    }
 ];
+const selectFields2 = [
+    {
+        id: "depot_bancaire",
+        label: "Dépôt Bancaire",
+        description: "Choisissez cette option si vous souhaitez payer la totalité des frais.",
+    },
+    {
+        id: "virement_bancaire",
+        label: "Virement Bancaire Direct",
+        description: "Choisissez cette option si vous avez souscrits à un fiancement .",
+    },
+    {
+        id: "mobile_money",
+        label: "Mobile Money",
+        description: "Effectuez un paiement via Mobile Money sur le compte Boaz Study, puis téléchargez la preuve de paiement dans l'application.",
+    }
+];
+
 const StepOne = () => (
 
     <div>
-        <h2 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>Informations Personnelles</h2>
+        <h1 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>  Principe de paiement</h1>
+        <h3 className="text-xl font-semibold mb-2" style={{ color: 'black', textAlign: 'center' }}>  Sélectionnez votre mode de paiement</h3>
+
         <div className='flex items-center justify-center flex-col flex-wrap gap-4'>
 
-            <div className="grid grid-cols-2 gap-4">
-                {fields.map((field) => (
-                    <InputField key={field.id} {...field} />
+            <div className="grid grid-cols-1 gap-4">
+                {selectFields.map((field) => (
+                    <SelectedField key={field.id} {...field} />
                 ))}
-
-                {/* Champ fichier séparé */}
-                <div className="w-[393px] h-[56px] m-2">
-                    <label htmlFor="scan_passeport" style={{ color: '#5E6366', fontSize: 12, fontWeight: 400 }} className="block mb-2 text-sm font-medium text-red-500 dark:text-white">
-                        Scan du passeport
-                    </label>
-                    <input
-                        type="file"
-                        id="scan_passeport"
-                        accept="image/*,application/pdf"
-                        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                    />
-                </div>
 
             </div>
         </div>
@@ -207,26 +177,15 @@ const StepOne = () => (
 
 const StepTwo = () => (
     <div>
-        <h2 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>Détails de la formation</h2>
+        <h2 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>Mode de paiement</h2>
+        <h3 className="text-xl font-semibold mb-2" style={{ color: 'black', textAlign: 'center' }}>  Sélectionnez votre mode de paiement</h3>
+
         <div className='flex items-center justify-center flex-col flex-wrap gap-4'>
 
-            <div className="grid grid-cols-2 gap-4">
-                {fields2.map((field) => (
-                    <InputField key={field.id} {...field} />
+            <div className="grid grid-cols-1 gap-4">
+                {selectFields2.map((field) => (
+                    <SelectedField key={field.id} {...field} />
                 ))}
-
-                {/* Champ fichier séparé */}
-                <div className="w-[393px] h-[56px] m-2">
-                    <label htmlFor="scan_passeport" style={{ color: '#5E6366', fontSize: 12, fontWeight: 400 }} className="block mb-2 text-sm font-medium text-red-500 dark:text-white">
-                        Scan du passeport
-                    </label>
-                    <input
-                        type="file"
-                        id="scan_passeport"
-                        accept="image/*,application/pdf"
-                        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                    />
-                </div>
 
             </div>
         </div>
@@ -235,16 +194,14 @@ const StepTwo = () => (
 
 const StepThree = () => (
     <div>
-        <h2 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>Informations Personnelles</h2>
-        <div className='flex items-center justify-center flex-col flex-wrap gap-4'>
-
-            <div className="grid grid-cols-2 gap-4">
-                {selectFields.map((field) => (
-                    <SelectField key={field.id} {...field} />
-                ))}
-
-
-
+        <h2 className="text-xl font-semibold mb-2" style={{ color: '#4379EE' }}>Etablissement bancaire</h2>
+        <h3 className="text-xl font-semibold mb-2 mt-5" style={{ color: 'black', textAlign: 'center' }}>  Choix de l’établissement bancaire</h3>
+        <div className='flex items-center justify-center flex-col flex-wrap gap-4 mt-15' style={{marginTop: 50}}>
+            <div style={{ width: '394px', height: '54px',border:'2px solid #D8D8D8',borderRadius:15 }} className=" flex items-center justify-center gap-2 border-[#D8D8D8]">
+                <img src='./assets/img/asd.png' alt='logo' style={{ width: "115px", height: 45 }} />
+            </div>
+            <div style={{ width: '394px', height: '54px',border:'2px solid #D8D8D8',borderRadius:15 }} className=" mt-3 flex items-center justify-center gap-2 border-[#D8D8D8]">
+                <img src='./assets/img/azs.png' alt='logo' style={{ width: "115px", height: 45 }} />
             </div>
         </div>
     </div>
