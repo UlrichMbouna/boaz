@@ -1,46 +1,118 @@
-# Getting Started with Create React App
+Voici un exemple de `README.md` adapté à un projet front-end React avec TypeScript, Tailwind CSS, Redux Toolkit et gestion de données mockées :
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+````md
+# 📚 Boaz Study - Frontend Technical Test
 
-In the project directory, you can run:
+Ce projet est un test technique front-end développé avec React, TypeScript, Tailwind CSS et Redux Toolkit. Il inclut un système de routing, des composants réutilisables, un mock de services, et une structure modulaire professionnelle.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Technologies utilisées
+- ⚛️ node v20.18.3
+- ⚛️ React 18
+- 📘 TypeScript
+- 🎨 Tailwind CSS
+- 📦 Redux Toolkit
+- 🔄 React Router DOM
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Lancer le projet en local
 
-### `npm run build`
+lien versel: https://vercel.com/ulrichmbounas-projects/boaz/D8qLfyN5UxmqeHipShCUDuN5s59v
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+pour se connecter :
+email :john.doe@example.com
+password :fake-token-1234
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+nb: le projet n'est pas responsive 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Cloner le dépôt
 
-### `npm run eject`
+```bash
+git clone https://github.com/UlrichMbouna/boaz.git
+cd boaz-study
+````
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2. Installer les dépendances
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Démarrer le serveur de développement
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm run dev
+```
 
-## Learn More
+Le projet sera disponible à l'adresse : [http://localhost:3000]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🗂️ Structure du projet
+
+```
+src/
+├── assets/               # Images, icônes, styles globaux
+├── components/           # Composants UI (Navbar, Button, etc.)
+├── features/             # Dossiers Redux slice (ex: auth, users)
+├── layout/               # Layout principal avec Navbar
+├── pages/                # Pages de navigation (Accueil, Login, etc.)
+├── routes/               # Composant contenant toutes les routes
+├── services/             # Services API ou mock
+│   ├── api.ts            # Configuration Axios
+│   └── userService.ts    # Exemple d'abstraction de service
+├── __mocks__/            # Données mockées pour les tests ou dev offline
+├── App.tsx               # Composant principal
+├── main.tsx              # Point d'entrée de l'application
+└── tailwind.config.ts    # Configuration Tailwind CSS
+```
+
+---
+
+
+## 🎨 Design et Typographie
+
+* **Couleur principale** : `#F5F6FA` (appliquée en fond global)
+* **Police** : `Nunito Sans` (importée via Tailwind)
+
+---
+
+## 🔄 Routing
+
+Les routes sont centralisées dans :
+
+```ts
+src/routes/AppRoutes.tsx
+```
+
+Elles sont intégrées avec une `Navbar` dans un layout global.
+
+---
+
+## 📦 Scripts utiles
+
+```bash
+npm run dev       # Lancer le projet
+npm run build     # Créer une version de production
+npm run preview   # Voir la version de prod localement
+```
+
+---
+
+## ✍️ Auteur
+
+**Koudjou Mbouna Ulrich**
+📍 Douala, Cameroun
+
+
+---
+
+```
+
+Souhaites-tu que je te le prépare directement dans un fichier `README.md` prêt à être copié dans ton projet ?
+```
